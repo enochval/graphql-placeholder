@@ -8,7 +8,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export class Author {
+export class User {
     id: number;
     name?: Nullable<string>;
     username?: Nullable<string>;
@@ -43,12 +43,20 @@ export class Post {
     id: number;
     title: string;
     body?: Nullable<string>;
+    comments?: Nullable<Nullable<Comment>[]>;
+}
+
+export class Comment {
+    id: number;
+    name?: Nullable<string>;
+    email?: Nullable<string>;
+    body?: Nullable<string>;
 }
 
 export abstract class IQuery {
-    abstract authors(): Nullable<Nullable<Author>[]> | Promise<Nullable<Nullable<Author>[]>>;
+    abstract users(): Nullable<Nullable<User>[]> | Promise<Nullable<Nullable<User>[]>>;
 
-    abstract author(id: number): Nullable<Author> | Promise<Nullable<Author>>;
+    abstract user(id: number): Nullable<User> | Promise<Nullable<User>>;
 }
 
 type Nullable<T> = T | null;

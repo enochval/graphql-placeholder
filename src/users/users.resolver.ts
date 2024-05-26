@@ -1,10 +1,10 @@
 
 import { Args, Parent, Query, ResolveField, Resolver } from "@nestjs/graphql";
-import { Author, Post } from "src/graphql";
-import { AuthorService } from "./author.service";
+import { Comment, Post, User } from "src/graphql";
+import { AuthorService } from "./users.service";
 import { PostsService } from "src/posts/posts.service";
 
-@Resolver('Author')
+@Resolver('User')
 export class AuthorsResolver {
 
     constructor(
@@ -12,13 +12,13 @@ export class AuthorsResolver {
         private readonly postsService: PostsService
     ){}
 
-    @Query('authors')
-    async authors(): Promise<Author[]> {
+    @Query('users')
+    async authors(): Promise<User[]> {
         return await this.authorService.getAuthors()
     }
 
-    @Query('author')
-    async author(@Args('id') id: number): Promise<Author> {
+    @Query('user')
+    async author(@Args('id') id: number): Promise<User> {
         return await this.authorService.getAuthor(id)
     }
 

@@ -3,7 +3,7 @@ import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { AxiosError, AxiosResponse } from 'axios';
 import { catchError, firstValueFrom } from 'rxjs';
-import { Author } from 'src/graphql';
+import { User } from 'src/graphql';
 
 @Injectable()
 export class AuthorService {
@@ -17,9 +17,9 @@ export class AuthorService {
         this.baseUrl = this.configService.get<string>('api.baseurl')
     }
 
-    async getAuthors(): Promise<Author[]> {
+    async getAuthors(): Promise<User[]> {
         const { data } = await firstValueFrom(
-            this.httpService.get<Author[]>(`${this.baseUrl}/users`).pipe(
+            this.httpService.get<User[]>(`${this.baseUrl}/users`).pipe(
                 catchError((error: AxiosError) => {
                     this.logger.error(error.response.data)
                     throw new BadRequestException('An error happened!')
@@ -29,9 +29,9 @@ export class AuthorService {
         return data
     }
 
-    async getAuthor(id: number): Promise<Author> {
+    async getAuthor(id: number): Promise<User> {
         const { data } = await firstValueFrom(
-            this.httpService.get<Author>(`${this.baseUrl}/users/${id}`).pipe(
+            this.httpService.get<User>(`${this.baseUrl}/users/${id}`).pipe(
                 catchError((err: AxiosError) => {
                     this.logger.error(err.response.data)
                     throw new BadRequestException("An error happended!")

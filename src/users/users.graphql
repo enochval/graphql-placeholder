@@ -1,4 +1,4 @@
-type Author {
+type User {
     id: Int!
     name: String
     username: String
@@ -33,14 +33,17 @@ type Post {
     id: Int!
     title: String!
     body: String
-    comments
+    comments: [Comment]
 }
 
 type Comment {
-
+    id: Int!
+    name: String
+    email: String
+    body: String
 }
 
 type Query {
-    authors: [Author]
-    author(id: Int!): Author
+    users: [User]
+    user(id: Int!): User
 }

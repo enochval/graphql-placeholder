@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { AuthorsResolver } from './author.resolver';
-import { AuthorService } from './author.service';
+import { AuthorsResolver } from './users.resolver';
+import { AuthorService } from './users.service';
 import { HttpModule } from '@nestjs/axios';
 import { PostsModule } from 'src/posts/posts.module';
 

@@ -52,4 +52,17 @@ export class PostsService {
         )
         return data.filter(a => a.userId === authorId)
     }
+
+    async getPostComments(postId: number): Promise<Comment[]> {
+        const { data } = await firstValueFrom(
+            this.httpService.get<Comment[]>(`${this.baseUrl}/post/${postId}/comments`)
+            .pipe(
+                catchError((err: AxiosError) => {
+                    this.logger.error(err.response.data)
+                    throw new BadRequestException("An error happened!")
+                })
+            )
+        )
+        return data
+    }
 }
