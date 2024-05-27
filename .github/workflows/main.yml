@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
@@ -23,6 +23,9 @@ jobs:
 
       - name: Copy GraphQL files
         run: npm run postbuild
+
+      - name: List `dist` contents
+        run: ls -R dist
 
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
