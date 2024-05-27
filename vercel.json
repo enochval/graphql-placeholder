@@ -11,5 +11,10 @@
             "src": "/(.*)",
             "dest": "dist/main.js"
         }
-    ]
+    ],
+    "functions": {
+        "api/**/*.js": {
+            "includeFiles": "dist/**"
+        }
+    }
 }
