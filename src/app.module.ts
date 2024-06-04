@@ -18,7 +18,8 @@ import configuration from './config/configuration';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       typePaths: ['./**/*.graphql'],
-
+      playground: true,
+      introspection: true,
       // definitions: {
       //   path: join(process.cwd(), 'src/graphql.ts'),
       //   outputAs: 'class'
