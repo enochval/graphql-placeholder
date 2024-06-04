@@ -1,30 +1,38 @@
 
 import { Args, Parent, Query, ResolveField, Resolver } from "@nestjs/graphql";
-import { Comment, Post, User } from "src/graphql";
-import { AuthorService } from "./users.service";
+import { Post, User } from "src/graphql";
+import { UserService } from "./users.service";
 import { PostsService } from "src/posts/posts.service";
+import { AlbumsService } from "src/albums/albums.service";
 
 @Resolver('User')
-export class AuthorsResolver {
+export class UsersResolver {
 
     constructor(
-        private readonly authorService: AuthorService,
-        private readonly postsService: PostsService
+        private readonly userService: UserService,
+        private readonly postsService: PostsService,
+        private readonly albumService: AlbumsService
     ){}
 
     @Query('users')
     async authors(): Promise<User[]> {
-        return await this.authorService.getAuthors()
+        return await this.userService.getUsers()
     }
 
     @Query('user')
     async author(@Args('id') id: number): Promise<User> {
-        return await this.authorService.getAuthor(id)
+        return await this.userService.getUserById(id)
     }
 
     @ResolveField('posts')
-    async getPosts(@Parent() author): Promise<Post[]> {
-        const { id } = author
-        return await this.postsService.getAuthorPosts(id)
+    async getPosts(@Parent() user): Promise<Post[]> {
+        const { id } = user
+        return await this.postsService.getUserPosts(id)
+    }
+
+    @ResolveField('albums')
+    async getAlbums(@Parent() user) {
+        const { id } = user
+        return await this.albumService.getUserAlbums(id);
     }
 }

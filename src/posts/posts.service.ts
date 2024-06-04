@@ -41,7 +41,7 @@ export class PostsService {
         return data
     }
 
-    async getAuthorPosts(authorId: number): Promise<Post[]> {
+    async getUserPosts(userId: number): Promise<Post[]> {
         const { data } = await firstValueFrom(
             this.httpService.get<any[]>(`${this.baseUrl}/posts`).pipe(
                 catchError((err: AxiosError) => {
@@ -50,7 +50,7 @@ export class PostsService {
                 })
             )
         )
-        return data.filter(a => a.userId === authorId)
+        return data.filter(a => a.userId === userId)
     }
 
     async getPostComments(postId: number): Promise<Comment[]> {

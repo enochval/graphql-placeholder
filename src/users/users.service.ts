@@ -6,8 +6,8 @@ import { catchError, firstValueFrom } from 'rxjs';
 import { User } from 'src/graphql';
 
 @Injectable()
-export class AuthorService {
-    private readonly logger: Logger = new Logger(AuthorService.name)
+export class UserService {
+    private readonly logger: Logger = new Logger(UserService.name)
     private readonly baseUrl: string
 
     constructor(
@@ -17,7 +17,7 @@ export class AuthorService {
         this.baseUrl = this.configService.get<string>('api.baseurl')
     }
 
-    async getAuthors(): Promise<User[]> {
+    async getUsers(): Promise<User[]> {
         const { data } = await firstValueFrom(
             this.httpService.get<User[]>(`${this.baseUrl}/users`).pipe(
                 catchError((error: AxiosError) => {
@@ -29,7 +29,7 @@ export class AuthorService {
         return data
     }
 
-    async getAuthor(id: number): Promise<User> {
+    async getUserById(id: number): Promise<User> {
         const { data } = await firstValueFrom(
             this.httpService.get<User>(`${this.baseUrl}/users/${id}`).pipe(
                 catchError((err: AxiosError) => {

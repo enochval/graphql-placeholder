@@ -8,6 +8,7 @@ type User {
     website: String
     company: Company
     posts: [Post]
+    albums: [Album]
 }
 
 type Address {
@@ -41,6 +42,19 @@ type Comment {
     name: String
     email: String
     body: String
+}
+
+type Album {
+    id: Int!
+    title: String
+    photos: [Photo]
+}
+
+type Photo {
+    id: Int!
+    title: String
+    url: String
+    thumbnailUrl: String
 }
 
 type Query {

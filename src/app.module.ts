@@ -7,6 +7,7 @@ import { join } from 'path';
 import { AuthorModule } from './users/users.module';
 import { PostsModule } from './posts/posts.module';
 import { ConfigModule } from '@nestjs/config';
+import { AlbumsModule } from './albums/albums.module';
 import configuration from './config/configuration';
 
 @Module({
@@ -20,15 +21,16 @@ import configuration from './config/configuration';
       typePaths: ['./**/*.graphql'],
       playground: true,
       introspection: true,
-      // definitions: {
-      //   path: join(process.cwd(), 'src/graphql.ts'),
-      //   outputAs: 'class'
-      // },
+      definitions: {
+        path: join(process.cwd(), 'src/graphql.ts'),
+        outputAs: 'class'
+      },
     }),
     AuthorModule,
-    PostsModule
+    PostsModule,
+    AlbumsModule
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}
