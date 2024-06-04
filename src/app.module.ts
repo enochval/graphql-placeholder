@@ -21,10 +21,10 @@ import configuration from './config/configuration';
       typePaths: ['./**/*.graphql'],
       playground: true,
       introspection: true,
-      definitions: {
-        path: join(process.cwd(), 'src/graphql.ts'),
-        outputAs: 'class'
-      },
+      // definitions: {
+      //   path: join(process.cwd(), 'src/graphql.ts'),
+      //   outputAs: 'class'
+      // },
     }),
     AuthorModule,
     PostsModule,
