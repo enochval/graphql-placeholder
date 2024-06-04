@@ -19,6 +19,7 @@ export class User {
     company?: Nullable<Company>;
     posts?: Nullable<Nullable<Post>[]>;
     albums?: Nullable<Nullable<Album>[]>;
+    todos?: Nullable<Nullable<Todo>[]>;
 }
 
 export class Address {
@@ -65,6 +66,12 @@ export class Photo {
     title?: Nullable<string>;
     url?: Nullable<string>;
     thumbnailUrl?: Nullable<string>;
+}
+
+export class Todo {
+    id: number;
+    title?: Nullable<string>;
+    completed?: Nullable<boolean>;
 }
 
 export abstract class IQuery {

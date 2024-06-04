@@ -9,6 +9,7 @@ type User {
     company: Company
     posts: [Post]
     albums: [Album]
+    todos: [Todo]
 }
 
 type Address {
@@ -55,6 +56,12 @@ type Photo {
     title: String
     url: String
     thumbnailUrl: String
+}
+
+type Todo {
+    id: Int!
+    title: String
+    completed: Boolean
 }
 
 type Query {

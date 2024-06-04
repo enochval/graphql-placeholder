@@ -8,6 +8,7 @@ import { AuthorModule } from './users/users.module';
 import { PostsModule } from './posts/posts.module';
 import { ConfigModule } from '@nestjs/config';
 import { AlbumsModule } from './albums/albums.module';
+import { TodosModule } from './todos/todos.module';
 import configuration from './config/configuration';
 
 @Module({
@@ -28,7 +29,8 @@ import configuration from './config/configuration';
     }),
     AuthorModule,
     PostsModule,
-    AlbumsModule
+    AlbumsModule,
+    TodosModule
   ],
   controllers: [AppController],
   providers: [AppService],
