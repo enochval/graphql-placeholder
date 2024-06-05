@@ -17,15 +17,26 @@ export class UserService {
         this.baseUrl = this.configService.get<string>('api.baseurl')
     }
 
-    async getUsers(): Promise<User[]> {
+    async getUsers(args: any): Promise<User[]> {
         const { data } = await firstValueFrom(
-            this.httpService.get<User[]>(`${this.baseUrl}/users`).pipe(
+            this.httpService.get<any|User[]>(`${this.baseUrl}/users/${args.userId ? args.userId : ''}`).pipe(
                 catchError((error: AxiosError) => {
                     this.logger.error(error.response.data)
                     throw new BadRequestException('An error happened!')
                 })
             )
         )
+
+        if (args.first && Array.isArray(data)) {
+            return data.slice(0, args.first)
+        }
+
+        if (args.userId) {
+            const user: Array<User> = []
+            user.push(data)
+            return user
+        }
+
         return data
     }
 

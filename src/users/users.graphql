@@ -1,5 +1,5 @@
 type User {
-    id: Int!
+    id: Int
     name: String
     username: String
     email: String
@@ -7,9 +7,9 @@ type User {
     phone: String
     website: String
     company: Company
-    posts: [Post]
-    albums: [Album]
-    todos: [Todo]
+    posts(first: Int): [Post]
+    albums(first: Int): [Album]
+    todos(first: Int): [Todo]
 }
 
 type Address {
@@ -33,9 +33,10 @@ type Company {
 
 type Post {
     id: Int!
-    title: String!
+    title: String
     body: String
-    comments: [Comment]
+    comments(first: Int): [Comment]
+    user: User
 }
 
 type Comment {
@@ -43,12 +44,14 @@ type Comment {
     name: String
     email: String
     body: String
+    post: Post
 }
 
 type Album {
     id: Int!
     title: String
-    photos: [Photo]
+    photos(first: Int): [Photo]
+    user: User
 }
 
 type Photo {
@@ -56,15 +59,19 @@ type Photo {
     title: String
     url: String
     thumbnailUrl: String
+    album: Album
 }
 
 type Todo {
     id: Int!
     title: String
     completed: Boolean
+    user: User
 }
 
 type Query {
-    users: [User]
-    user(id: Int!): User
+    users(first: Int, userId: Int): [User]
+    userById(id: Int!): User
+    posts(first: Int, postId: Int, userId: Int): [Post]
+    comments(first: Int, commentId: Int, postId: Int): [Comment]
 }

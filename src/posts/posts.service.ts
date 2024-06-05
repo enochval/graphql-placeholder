@@ -1,7 +1,7 @@
 import { HttpService } from '@nestjs/axios';
 import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { AxiosError, AxiosResponse } from 'axios';
+import { AxiosError } from 'axios';
 import { catchError, firstValueFrom } from 'rxjs';
 import { Post } from 'src/graphql';
 
@@ -17,16 +17,33 @@ export class PostsService {
         this.baseUrl = this.configService.get<string>('api.baseurl')
     }
 
-    async getPosts(): Promise<Post[]> {
+    async getPosts(args: any): Promise<Post[]> {
+        const slashPostId = `${args.commentId ? '/'+args.commentId : ''}`
+        const queryUserId = `${args.userId ? '?userId=' + args.userId : ''}`
+        const uri = `${this.baseUrl}/posts${slashPostId}${queryUserId}`
+
         const { data } = await firstValueFrom(
-            this.httpService.get<Post[]>(`${this.baseUrl}/posts`).pipe(
+            this.httpService.get<any|Post[]>(uri).pipe(
                 catchError((err: AxiosError) => {
                     this.logger.error(err.response.data)
                     throw new BadRequestException("An error happened!")
                 })
             )
         )
-        return data
+
+        if (args.postId) {
+            const posts: Array<Post> = []
+            posts.push(data)
+            return posts
+        }
+
+        let rsp: Array<any> = data
+
+        if (args.first) {
+            rsp = rsp.slice(0, args.first)
+        }
+
+        return rsp
     }
 
     async getPost(id: number): Promise<Post> {
@@ -41,7 +58,7 @@ export class PostsService {
         return data
     }
 
-    async getUserPosts(userId: number): Promise<Post[]> {
+    async getUserPosts(userId: number, args: any): Promise<Post[]> {
         const { data } = await firstValueFrom(
             this.httpService.get<any[]>(`${this.baseUrl}/posts`).pipe(
                 catchError((err: AxiosError) => {
@@ -50,10 +67,16 @@ export class PostsService {
                 })
             )
         )
-        return data.filter(a => a.userId === userId)
+        const userPosts = data.filter(a => a.userId === userId)
+
+        if (args.first) {
+            return userPosts.slice(0, args.first)
+        }
+
+        return userPosts
     }
 
-    async getPostComments(postId: number): Promise<Comment[]> {
+    async getPostComments(postId: number, args: any): Promise<Comment[]> {
         const { data } = await firstValueFrom(
             this.httpService.get<Comment[]>(`${this.baseUrl}/post/${postId}/comments`)
             .pipe(
@@ -63,6 +86,11 @@ export class PostsService {
                 })
             )
         )
+
+        if (args.first) {
+            return data.slice(0, args.first)
+        }
+
         return data
     }
 }

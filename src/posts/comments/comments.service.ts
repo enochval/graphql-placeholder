@@ -3,12 +3,12 @@ import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { AxiosError } from 'axios';
 import { catchError, firstValueFrom } from 'rxjs';
-import { Photo } from 'src/graphql';
+import { Comment } from 'src/graphql';
 
 @Injectable()
-export class PhotosService {
-    private readonly logger: Logger = new Logger(PhotosService.name)
-    private readonly baseUrl: string
+export class CommentsService {
+    private readonly logger: Logger = new Logger(CommentsService.name)
+    private baseUrl: string
 
     constructor(
         private readonly httpService: HttpService,
@@ -17,9 +17,13 @@ export class PhotosService {
         this.baseUrl = this.configService.get<string>('api.baseurl')
     }
 
-    async getPhotosByAlbumId(albumId: number, args: any): Promise<Photo[]> {
+    async getComments(args: any): Promise<Comment[]> {
+        const slashCommentId = `${args.commentId ? '/'+args.commentId : ''}`
+        const queryPostId = `${args.postId ? '?postId=' + args.postId : ''}`
+        const uri = `${this.baseUrl}/comments${slashCommentId}${queryPostId}`
+
         const { data } = await firstValueFrom(
-            this.httpService.get<any[]>(`${this.baseUrl}/photos`).pipe(
+            this.httpService.get<any|Comment[]>(uri).pipe(
                 catchError((err: AxiosError) => {
                     this.logger.error(err.response.data)
                     throw new BadRequestException("An error happened!")
@@ -27,12 +31,18 @@ export class PhotosService {
             )
         )
 
-        const photos: Photo[] = data.filter(o => o.albumId === albumId)
-
-        if (args.first) {
-            return photos.slice(0, args.first)
+        if (args.commentId) {
+            const res: Array<Comment> = []
+            res.push(data)
+            return res
         }
 
-        return photos;
+        let rsp: Array<Comment> = data
+
+        if (args.first) {
+            rsp = rsp.slice(0, args.first)
+        }
+ 
+        return rsp
     }
 }

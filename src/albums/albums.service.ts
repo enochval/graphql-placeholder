@@ -17,7 +17,7 @@ export class AlbumsService {
         this.baseUrl = this.configService.get<string>('api.baseurl')
     }
 
-    async getUserAlbums(id: number): Promise<Album[]> {
+    async getUserAlbums(id: number, args: any): Promise<Album[]> {
         const { data } = await firstValueFrom(
             this.httpService.get<any[]>(`${this.baseUrl}/albums`).pipe(
                 catchError((err: AxiosError) => {
@@ -26,6 +26,12 @@ export class AlbumsService {
                 })
             )
         )
-        return data.filter(o => o.userId === id)
+        const userAlbums = data.filter(o => o.userId === id)
+
+        if (args.first) {
+            return userAlbums.slice(0, args.first)
+        }
+
+        return userAlbums;
     }
 }

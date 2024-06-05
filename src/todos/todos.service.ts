@@ -17,7 +17,7 @@ export class TodosService {
         this.baseUrl = this.configService.get<string>('api.baseurl')
     }
 
-    async getTodosByUserId(userId: number): Promise<Todo[]> {
+    async getTodosByUserId(userId: number, args: any): Promise<Todo[]> {
         const { data } = await firstValueFrom(
             this.httpService.get<any[]>(`${this.baseUrl}/todos`).pipe(
                 catchError((err: AxiosError) => {
@@ -26,6 +26,13 @@ export class TodosService {
                 })
             )
         )
-        return data.filter(o => o.userId === userId)
+        
+        const todos = data.filter(o => o.userId === userId)
+
+        if (args.first) {
+            return todos.slice(0, args.first)
+        }
+
+        return todos
     }
 }

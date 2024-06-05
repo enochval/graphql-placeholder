@@ -9,7 +9,7 @@
 /* eslint-disable */
 
 export class User {
-    id: number;
+    id?: Nullable<number>;
     name?: Nullable<string>;
     username?: Nullable<string>;
     email?: Nullable<string>;
@@ -43,9 +43,10 @@ export class Company {
 
 export class Post {
     id: number;
-    title: string;
+    title?: Nullable<string>;
     body?: Nullable<string>;
     comments?: Nullable<Nullable<Comment>[]>;
+    user?: Nullable<User>;
 }
 
 export class Comment {
@@ -53,12 +54,14 @@ export class Comment {
     name?: Nullable<string>;
     email?: Nullable<string>;
     body?: Nullable<string>;
+    post?: Nullable<Post>;
 }
 
 export class Album {
     id: number;
     title?: Nullable<string>;
     photos?: Nullable<Nullable<Photo>[]>;
+    user?: Nullable<User>;
 }
 
 export class Photo {
@@ -66,18 +69,24 @@ export class Photo {
     title?: Nullable<string>;
     url?: Nullable<string>;
     thumbnailUrl?: Nullable<string>;
+    album?: Nullable<Album>;
 }
 
 export class Todo {
     id: number;
     title?: Nullable<string>;
     completed?: Nullable<boolean>;
+    user?: Nullable<User>;
 }
 
 export abstract class IQuery {
-    abstract users(): Nullable<Nullable<User>[]> | Promise<Nullable<Nullable<User>[]>>;
+    abstract users(first?: Nullable<number>, userId?: Nullable<number>): Nullable<Nullable<User>[]> | Promise<Nullable<Nullable<User>[]>>;
 
-    abstract user(id: number): Nullable<User> | Promise<Nullable<User>>;
+    abstract userById(id: number): Nullable<User> | Promise<Nullable<User>>;
+
+    abstract posts(first?: Nullable<number>, postId?: Nullable<number>, userId?: Nullable<number>): Nullable<Nullable<Post>[]> | Promise<Nullable<Nullable<Post>[]>>;
+
+    abstract comments(first?: Nullable<number>, commentId?: Nullable<number>, postId?: Nullable<number>): Nullable<Nullable<Comment>[]> | Promise<Nullable<Nullable<Comment>[]>>;
 }
 
 type Nullable<T> = T | null;

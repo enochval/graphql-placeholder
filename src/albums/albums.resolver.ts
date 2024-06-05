@@ -1,4 +1,4 @@
-import { Parent, ResolveField, Resolver } from "@nestjs/graphql";
+import { Args, Parent, ResolveField, Resolver } from "@nestjs/graphql";
 import { PhotosService } from "./photos/photos.service";
 import { Photo } from "src/graphql";
 
@@ -8,9 +8,9 @@ export class AlbumResolver {
     constructor(private readonly photosService: PhotosService) {}
 
     @ResolveField('photos')
-    async getAlbumPhotos(@Parent() album): Promise<Photo[]> {
+    async getAlbumPhotos(@Parent() album, @Args() args): Promise<Photo[]> {
         const { id } = album
-        return await this.photosService.getPhotosByAlbumId(id)
+        return await this.photosService.getPhotosByAlbumId(id, args)
     }
 
 }

@@ -5,6 +5,7 @@ import { UserService } from "./users.service";
 import { PostsService } from "src/posts/posts.service";
 import { AlbumsService } from "src/albums/albums.service";
 import { TodosService } from "src/todos/todos.service";
+import { Inject, forwardRef } from "@nestjs/common";
 
 @Resolver('User')
 export class UsersResolver {
@@ -17,30 +18,30 @@ export class UsersResolver {
     ){}
 
     @Query('users')
-    async authors(): Promise<User[]> {
-        return await this.userService.getUsers()
+    async authors(@Args() args): Promise<User[]> {
+        return await this.userService.getUsers(args)
     }
 
-    @Query('user')
+    @Query('userById')
     async author(@Args('id') id: number): Promise<User> {
         return await this.userService.getUserById(id)
     }
 
     @ResolveField('posts')
-    async getPosts(@Parent() user): Promise<Post[]> {
+    async getPosts(@Parent() user, @Args() args): Promise<Post[]> {
         const { id } = user
-        return await this.postsService.getUserPosts(id)
+        return await this.postsService.getUserPosts(id, args)
     }
 
     @ResolveField('albums')
-    async getAlbums(@Parent() user): Promise<Album[]> {
+    async getAlbums(@Parent() user, @Args() args): Promise<Album[]> {
         const { id } = user
-        return await this.albumService.getUserAlbums(id);
+        return await this.albumService.getUserAlbums(id, args);
     }
 
     @ResolveField('todos')
-    async getTodos(@Parent() user): Promise<Todo[]> {
+    async getTodos(@Parent() user, @Args() args): Promise<Todo[]> {
         const { id } = user
-        return await this.todoService.getTodosByUserId(id)
+        return await this.todoService.getTodosByUserId(id, args)
     }
 }

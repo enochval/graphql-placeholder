@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
-import { AuthorModule } from './users/users.module';
+import { UserModule } from './users/users.module';
 import { PostsModule } from './posts/posts.module';
 import { ConfigModule } from '@nestjs/config';
 import { AlbumsModule } from './albums/albums.module';
@@ -27,7 +27,7 @@ import configuration from './config/configuration';
       //   outputAs: 'class'
       // },
     }),
-    AuthorModule,
+    UserModule,
     PostsModule,
     AlbumsModule,
     TodosModule
