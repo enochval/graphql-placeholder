@@ -74,4 +74,5 @@ type Query {
     userById(id: Int!): User
     posts(first: Int, postId: Int, userId: Int): [Post]
     comments(first: Int, commentId: Int, postId: Int): [Comment]
+    albums(first: Int, albumId: Int, userId: Int): [Album]
 }

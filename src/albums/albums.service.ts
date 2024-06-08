@@ -17,21 +17,33 @@ export class AlbumsService {
         this.baseUrl = this.configService.get<string>('api.baseurl')
     }
 
-    async getUserAlbums(id: number, args: any): Promise<Album[]> {
-        const { data } = await firstValueFrom(
-            this.httpService.get<any[]>(`${this.baseUrl}/albums`).pipe(
-                catchError((err: AxiosError) => {
-                    this.logger.error(err.response.data)
-                    throw new BadRequestException("An error happened!")
-                })
-            )
-        )
-        const userAlbums = data.filter(o => o.userId === id)
+    async getAlbums(args: any): Promise<Album[]> {
+        const slashAlbumId = `${args.albumId ? '/' + args.albumId : ''}`
+        const queryUserId = `${args.userId ? '?userId=' + args.userId : ''}`
+        const uri = `${this.baseUrl}/albums${slashAlbumId}${queryUserId}`
 
-        if (args.first) {
-            return userAlbums.slice(0, args.first)
+        const { data } = await firstValueFrom(
+            this.httpService.get<any|Album[]>(uri)
+                .pipe(
+                    catchError((err: AxiosError) => {
+                        this.logger.error(err.response.data)
+                        throw new BadRequestException('An error happened!')
+                    })
+                )
+        )
+
+        if(args.albumId) {
+            const album: Array<Album> = []
+            album.push(data)
+            return album
         }
 
-        return userAlbums;
+        let rsp: Array<any> = data
+        if (args.first) {
+            const length = (args.first > rsp.length) ? rsp.length : args.first
+            rsp = rsp.slice(0, length)
+        }
+
+        return rsp
     }
 }

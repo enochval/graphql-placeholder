@@ -18,7 +18,7 @@ export class PostsService {
     }
 
     async getPosts(args: any): Promise<Post[]> {
-        const slashPostId = `${args.commentId ? '/'+args.commentId : ''}`
+        const slashPostId = `${args.postId ? '/'+args.postId : ''}`
         const queryUserId = `${args.userId ? '?userId=' + args.userId : ''}`
         const uri = `${this.baseUrl}/posts${slashPostId}${queryUserId}`
 
@@ -40,7 +40,8 @@ export class PostsService {
         let rsp: Array<any> = data
 
         if (args.first) {
-            rsp = rsp.slice(0, args.first)
+            const length = (args.first > rsp.length) ? rsp.length : args.first
+            rsp = rsp.slice(0, length)
         }
 
         return rsp
@@ -58,24 +59,6 @@ export class PostsService {
         return data
     }
 
-    async getUserPosts(userId: number, args: any): Promise<Post[]> {
-        const { data } = await firstValueFrom(
-            this.httpService.get<any[]>(`${this.baseUrl}/posts`).pipe(
-                catchError((err: AxiosError) => {
-                    this.logger.error(err.response.data)
-                    throw new BadRequestException("An error happened!")
-                })
-            )
-        )
-        const userPosts = data.filter(a => a.userId === userId)
-
-        if (args.first) {
-            return userPosts.slice(0, args.first)
-        }
-
-        return userPosts
-    }
-
     async getPostComments(postId: number, args: any): Promise<Comment[]> {
         const { data } = await firstValueFrom(
             this.httpService.get<Comment[]>(`${this.baseUrl}/post/${postId}/comments`)
@@ -88,7 +71,8 @@ export class PostsService {
         )
 
         if (args.first) {
-            return data.slice(0, args.first)
+            const length = (args.first > data.length) ? data.length : args.first
+            return data.slice(0, length)
         }
 
         return data

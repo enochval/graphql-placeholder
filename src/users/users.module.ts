@@ -9,7 +9,8 @@ import { TodosModule } from 'src/todos/todos.module';
 @Module({
     imports: [
         forwardRef(() => PostsModule),
-        HttpModule, AlbumsModule, TodosModule],
+        forwardRef(() => AlbumsModule),
+        HttpModule, TodosModule],
     providers: [UsersResolver, UserService],
     exports: [UserService]
 })

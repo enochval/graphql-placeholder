@@ -5,7 +5,6 @@ import { UserService } from "./users.service";
 import { PostsService } from "src/posts/posts.service";
 import { AlbumsService } from "src/albums/albums.service";
 import { TodosService } from "src/todos/todos.service";
-import { Inject, forwardRef } from "@nestjs/common";
 
 @Resolver('User')
 export class UsersResolver {
@@ -30,13 +29,14 @@ export class UsersResolver {
     @ResolveField('posts')
     async getPosts(@Parent() user, @Args() args): Promise<Post[]> {
         const { id } = user
-        return await this.postsService.getUserPosts(id, args)
+        args.userId = id
+        return await this.postsService.getPosts(args)
     }
 
     @ResolveField('albums')
     async getAlbums(@Parent() user, @Args() args): Promise<Album[]> {
-        const { id } = user
-        return await this.albumService.getUserAlbums(id, args);
+        args.userId = user.id
+        return await this.albumService.getAlbums(args);
     }
 
     @ResolveField('todos')

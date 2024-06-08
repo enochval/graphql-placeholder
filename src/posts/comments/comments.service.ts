@@ -40,7 +40,8 @@ export class CommentsService {
         let rsp: Array<Comment> = data
 
         if (args.first) {
-            rsp = rsp.slice(0, args.first)
+            const length = (args.first > rsp.length) ? rsp.length : args.first
+            rsp = rsp.slice(0, length)
         }
  
         return rsp

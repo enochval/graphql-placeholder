@@ -30,7 +30,8 @@ export class TodosService {
         const todos = data.filter(o => o.userId === userId)
 
         if (args.first) {
-            return todos.slice(0, args.first)
+            const length = (args.first > todos.length) ? todos.length : args.first
+            return todos.slice(0, length)
         }
 
         return todos

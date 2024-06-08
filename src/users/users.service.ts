@@ -1,7 +1,7 @@
 import { HttpService } from '@nestjs/axios';
 import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { AxiosError, AxiosResponse } from 'axios';
+import { AxiosError } from 'axios';
 import { catchError, firstValueFrom } from 'rxjs';
 import { User } from 'src/graphql';
 
@@ -18,8 +18,11 @@ export class UserService {
     }
 
     async getUsers(args: any): Promise<User[]> {
+        const slashUserId = `${args.userId ? '/'+args.userId : ''}`
+        const uri = `${this.baseUrl}/users${slashUserId}`
+
         const { data } = await firstValueFrom(
-            this.httpService.get<any|User[]>(`${this.baseUrl}/users/${args.userId ? args.userId : ''}`).pipe(
+            this.httpService.get<any|User[]>(uri).pipe(
                 catchError((error: AxiosError) => {
                     this.logger.error(error.response.data)
                     throw new BadRequestException('An error happened!')
@@ -27,17 +30,19 @@ export class UserService {
             )
         )
 
-        if (args.first && Array.isArray(data)) {
-            return data.slice(0, args.first)
-        }
-
         if (args.userId) {
             const user: Array<User> = []
             user.push(data)
             return user
         }
 
-        return data
+        let rsp: Array<any> = data
+        if (args.first) {
+            const length = (args.first > rsp.length) ? rsp.length : args.first
+            rsp = rsp.slice(0, length)
+        }
+
+        return rsp
     }
 
     async getUserById(id: number): Promise<User> {

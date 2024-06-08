@@ -30,7 +30,8 @@ export class PhotosService {
         const photos: Photo[] = data.filter(o => o.albumId === albumId)
 
         if (args.first) {
-            return photos.slice(0, args.first)
+            const length = (args.first > photos.length) ? photos.length : args.first
+            return photos.slice(0, length)
         }
 
         return photos;
