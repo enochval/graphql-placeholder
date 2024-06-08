@@ -89,6 +89,8 @@ export abstract class IQuery {
     abstract comments(first?: Nullable<number>, commentId?: Nullable<number>, postId?: Nullable<number>): Nullable<Nullable<Comment>[]> | Promise<Nullable<Nullable<Comment>[]>>;
 
     abstract albums(first?: Nullable<number>, albumId?: Nullable<number>, userId?: Nullable<number>): Nullable<Nullable<Album>[]> | Promise<Nullable<Nullable<Album>[]>>;
+
+    abstract photos(first?: Nullable<number>, photoId?: Nullable<number>, albumId?: Nullable<number>): Nullable<Nullable<Photo>[]> | Promise<Nullable<Nullable<Photo>[]>>;
 }
 
 type Nullable<T> = T | null;

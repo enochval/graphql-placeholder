@@ -20,8 +20,8 @@ export class AlbumResolver {
 
     @ResolveField('photos')
     async getAlbumPhotos(@Parent() album, @Args() args): Promise<Photo[]> {
-        const { id } = album
-        return await this.photosService.getPhotosByAlbumId(id, args)
+        args.albumId = album.id
+        return await this.photosService.getPhotos(args)
     }
 
     @ResolveField('user')

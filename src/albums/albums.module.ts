@@ -1,16 +1,17 @@
 import { Module, forwardRef } from '@nestjs/common';
 import { AlbumsService } from './albums.service';
-import { HttpModule } from '@nestjs/axios';
 import { PhotosService } from './photos/photos.service';
 import { AlbumResolver } from './albums.resolver';
 import { UserModule } from 'src/users/users.module';
+import { JsonplaceholderModule } from 'src/jsonplaceholder/jsonplaceholder.module';
+import { PhotosResolver } from './photos/photos.resolver';
 
 @Module({
     imports: [
         forwardRef(() => UserModule),
-        HttpModule
+        JsonplaceholderModule
     ],
-    providers: [AlbumsService, AlbumResolver, PhotosService],
+    providers: [AlbumsService, AlbumResolver, PhotosService, PhotosResolver],
     exports: [AlbumsService, PhotosService]
 })
 export class AlbumsModule {}

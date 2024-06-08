@@ -18,6 +18,6 @@ export class CommentsResolver {
 
     @ResolveField('post')
     async getCommentPost(@Parent() comment): Promise<Post> {
-        return await this.postsService.getPost(comment.postId)
+        return await this.postsService.getPostById(comment.postId)
     }
 }

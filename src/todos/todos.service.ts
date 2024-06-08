@@ -1,39 +1,23 @@
-import { HttpService } from '@nestjs/axios';
-import { BadRequestException, Injectable, Logger } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
-import { AxiosError } from 'axios';
-import { catchError, firstValueFrom } from 'rxjs';
+import { Injectable } from '@nestjs/common';
 import { Todo } from 'src/graphql';
+import { JsonplaceholderService } from 'src/jsonplaceholder/jsonplaceholder.service';
 
 @Injectable()
 export class TodosService {
-    private readonly baseUrl: string
-    private readonly logger: Logger = new Logger(TodosService.name)
 
     constructor(
-        private readonly httpService: HttpService,
-        private readonly configService: ConfigService
-    ) {
-        this.baseUrl = this.configService.get<string>('api.baseurl')
-    }
+        private readonly jsonplaceholderService: JsonplaceholderService<Todo>
+    ) {}
 
-    async getTodosByUserId(userId: number, args: any): Promise<Todo[]> {
-        const { data } = await firstValueFrom(
-            this.httpService.get<any[]>(`${this.baseUrl}/todos`).pipe(
-                catchError((err: AxiosError) => {
-                    this.logger.error(err.response.data)
-                    throw new BadRequestException("An error happened!")
-                })
-            )
-        )
+    async getTodos(args: any): Promise<Todo[]> {
+        const slashTodoId: string = `${args.todoId ? '/' + args.todoId : ''}`
+        const queryUserId: string = `${args.userId ? '?userId=' + args.userId : ''}`
+        const uri: string = `/todos${slashTodoId}${queryUserId}`
         
-        const todos = data.filter(o => o.userId === userId)
-
-        if (args.first) {
-            const length = (args.first > todos.length) ? todos.length : args.first
-            return todos.slice(0, length)
+        if (args.todoId) {
+            args.isOne = true
         }
 
-        return todos
+        return await this.jsonplaceholderService.handleGetRequest(uri, args)
     }
 }

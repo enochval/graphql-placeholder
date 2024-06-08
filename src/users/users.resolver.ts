@@ -41,7 +41,7 @@ export class UsersResolver {
 
     @ResolveField('todos')
     async getTodos(@Parent() user, @Args() args): Promise<Todo[]> {
-        const { id } = user
-        return await this.todoService.getTodosByUserId(id, args)
+        args.userId = user.id
+        return await this.todoService.getTodos(args)
     }
 }
