@@ -1,14 +1,15 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { TodosService } from './todos.service';
-import { HttpModule } from '@nestjs/axios';
 import { JsonplaceholderModule } from 'src/jsonplaceholder/jsonplaceholder.module';
+import { TodosResolver } from './todos.resolver';
+import { UserModule } from 'src/users/users.module';
 
 @Module({
   imports: [
-    HttpModule,
-    JsonplaceholderModule
+    JsonplaceholderModule,
+    forwardRef(() => UserModule)
   ],
-  providers: [TodosService],
+  providers: [TodosService, TodosResolver],
   exports: [TodosService]
 })
 export class TodosModule {}

@@ -76,4 +76,5 @@ type Query {
     comments(first: Int, commentId: Int, postId: Int): [Comment]
     albums(first: Int, albumId: Int, userId: Int): [Album]
     photos(first: Int, photoId: Int, albumId: Int): [Photo]
+    todos(first: Int, todoId: Int, userId: Int): [Todo]
 }

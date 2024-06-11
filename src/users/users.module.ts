@@ -10,7 +10,7 @@ import { JsonplaceholderModule } from 'src/jsonplaceholder/jsonplaceholder.modul
     imports: [
         forwardRef(() => PostsModule),
         forwardRef(() => AlbumsModule),
-        TodosModule,
+        forwardRef(() => TodosModule),
         JsonplaceholderModule
     ],
     providers: [UsersResolver, UserService],
