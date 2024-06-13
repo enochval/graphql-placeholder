@@ -48,4 +48,44 @@ export class JsonplaceholderService<T> {
 
         return rsp
     }
+
+    async handlePostRequest<P>(uri: string, payload: P): Promise<T> {
+        const url = `${this.baseUrl}${uri}`
+        const { data } = await firstValueFrom(
+            this.httpService.post<T>(url, payload).pipe(
+                catchError((err: AxiosError) => {
+                    this.logger.error(err.response.data)
+                    throw new BadRequestException("An error happened!")
+                })
+            )
+        )
+        
+        return data
+    }
+
+    async handlePatchRequest<P>(uri: string, payload: P): Promise<T> {
+        const url = `${this.baseUrl}${uri}`
+        const { data } = await firstValueFrom(
+            this.httpService.patch<T>(url, payload).pipe(
+                catchError((err: AxiosError) => {
+                    this.logger.error(err.response.data)
+                    throw new BadRequestException("An error happened!")
+                })
+            )
+        )
+        return data
+    }
+
+    async handleDeleteRequest(uri: string): Promise<any> {
+        const url = `${this.baseUrl}${uri}`
+        const { data } = await firstValueFrom(
+            this.httpService.delete<any>(url).pipe(
+                catchError((err: AxiosError) => {
+                    this.logger.error(err.response.data)
+                    throw new BadRequestException("An error happened!")
+                })
+            )
+        )
+        return data
+    }
 }

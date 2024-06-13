@@ -8,8 +8,20 @@
 /* tslint:disable */
 /* eslint-disable */
 
+export class CreatePostInput {
+    title: string;
+    body: string;
+    userId: number;
+}
+
+export class UpdatePostInput {
+    title?: Nullable<string>;
+    body?: Nullable<string>;
+    userId?: Nullable<number>;
+}
+
 export class User {
-    id?: Nullable<number>;
+    id: number;
     name?: Nullable<string>;
     username?: Nullable<string>;
     email?: Nullable<string>;
@@ -93,6 +105,14 @@ export abstract class IQuery {
     abstract photos(first?: Nullable<number>, photoId?: Nullable<number>, albumId?: Nullable<number>): Nullable<Nullable<Photo>[]> | Promise<Nullable<Nullable<Photo>[]>>;
 
     abstract todos(first?: Nullable<number>, todoId?: Nullable<number>, userId?: Nullable<number>): Nullable<Nullable<Todo>[]> | Promise<Nullable<Nullable<Todo>[]>>;
+}
+
+export abstract class IMutation {
+    abstract createPost(post: CreatePostInput): Nullable<Post> | Promise<Nullable<Post>>;
+
+    abstract updatePost(postId: number, post: UpdatePostInput): Nullable<Post> | Promise<Nullable<Post>>;
+
+    abstract deletePost(postId: number): Nullable<string> | Promise<Nullable<string>>;
 }
 
 type Nullable<T> = T | null;

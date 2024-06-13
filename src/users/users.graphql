@@ -1,5 +1,5 @@
 type User {
-    id: Int
+    id: Int!
     name: String
     username: String
     email: String
@@ -69,6 +69,18 @@ type Todo {
     user: User
 }
 
+input CreatePostInput {
+    title: String!
+    body: String!
+    userId: Int!
+}
+
+input UpdatePostInput {
+    title: String
+    body: String
+    userId: Int
+}
+
 type Query {
     users(first: Int, userId: Int): [User]
     userById(id: Int!): User
@@ -77,4 +89,10 @@ type Query {
     albums(first: Int, albumId: Int, userId: Int): [Album]
     photos(first: Int, photoId: Int, albumId: Int): [Photo]
     todos(first: Int, todoId: Int, userId: Int): [Todo]
+}
+
+type Mutation {
+    createPost(post: CreatePostInput!): Post
+    updatePost(postId: Int!, post: UpdatePostInput!): Post
+    deletePost(postId: Int!): String
 }
