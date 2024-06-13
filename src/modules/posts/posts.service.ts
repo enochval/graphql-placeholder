@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Post } from 'src/graphql';
-import { JsonplaceholderService } from 'src/jsonplaceholder/jsonplaceholder.service';
+import { JsonplaceholderService } from 'src/common/services/jsonplaceholder/jsonplaceholder.service';
 import { CreatePostDTO } from './dto/create-post.dto';
 
 @Injectable()

@@ -1,8 +1,8 @@
 import { Module, forwardRef } from '@nestjs/common';
 import { TodosService } from './todos.service';
-import { JsonplaceholderModule } from 'src/jsonplaceholder/jsonplaceholder.module';
+import { JsonplaceholderModule } from 'src/common/services/jsonplaceholder/jsonplaceholder.module';
 import { TodosResolver } from './todos.resolver';
-import { UserModule } from 'src/users/users.module';
+import { UserModule } from 'src/modules/users/users.module';
 
 @Module({
   imports: [

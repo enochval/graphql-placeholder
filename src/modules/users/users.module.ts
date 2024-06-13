@@ -1,10 +1,10 @@
 import { Module, forwardRef } from '@nestjs/common';
 import { UsersResolver } from './users.resolver';
 import { UserService } from './users.service';
-import { PostsModule } from 'src/posts/posts.module';
-import { AlbumsModule } from 'src/albums/albums.module';
-import { TodosModule } from 'src/todos/todos.module';
-import { JsonplaceholderModule } from 'src/jsonplaceholder/jsonplaceholder.module';
+import { PostsModule } from 'src/modules/posts/posts.module';
+import { AlbumsModule } from 'src/modules/albums/albums.module';
+import { TodosModule } from 'src/modules/todos/todos.module';
+import { JsonplaceholderModule } from 'src/common/services/jsonplaceholder/jsonplaceholder.module';
 
 @Module({
     imports: [

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Comment } from 'src/graphql';
-import { JsonplaceholderService } from 'src/jsonplaceholder/jsonplaceholder.service';
+import { JsonplaceholderService } from 'src/common/services/jsonplaceholder/jsonplaceholder.service';
 
 @Injectable()
 export class CommentsService {

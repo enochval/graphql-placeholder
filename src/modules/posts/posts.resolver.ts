@@ -1,7 +1,7 @@
 import { Args, Mutation, Parent, Query, ResolveField, Resolver } from "@nestjs/graphql";
 import { PostsService } from "./posts.service";
 import { Post, User, Comment } from "src/graphql";
-import { UserService } from "src/users/users.service";
+import { UserService } from "src/modules/users/users.service";
 import { CommentsService } from "./comments/comments.service";
 import { CreatePostDTO } from "./dto/create-post.dto";
 

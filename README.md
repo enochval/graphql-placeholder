@@ -1,11 +1,11 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="100" alt="Nest Logo" /></a>
+  <a href="http://nestjs.com/" target="blank"><img src="https://www.vectorlogo.zone/logos/graphql/graphql-icon.svg" width="100" alt="GraphQL Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# JSON Placeholder GraphQL API
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+<p align="center">Welcome to the <a href="https://graphqljsonplaceholder.vercel.app" target="blank">JSON Placeholder GraphQL API</a>!</p>
     <p align="center">
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
@@ -19,55 +19,43 @@
     <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
   <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This project is a NestJS GraphQL implementation of the popular [JSON Placeholder](https://jsonplaceholder.typicode.com) API, providing developers with a GraphQL playground for testing and experimentation.
 
-## Installation
+## Features
 
-```bash
-$ npm install
-```
+- No registration
+- Zero-config
+- Basic GraphQL API
+- "Has many" relationships
+- Filters and nested queries
+- Cross-domain (CORS and JSONP)
+- Supports QUERY, MUTATION
+- HTTP or HTTPS
+- Compatible with React, Angular, Vue, Ember, ...
+- **GraphQL Playground**: An interactive playground for testing GraphQL queries and mutations.
+- **NestJS Framework**: Built with NestJS for high performance and maintainability.
+- **JSON Placeholder Integration**: Seamless integration with JSON Placeholder API data including posts, comments, users, todos, albums and photos.
+- **Type-safe Queries**: Utilize TypeScript for a smooth and error-free development experience.
 
-## Running the app
+## Usage
 
-```bash
-# development
-$ npm run start
+- **Queries:** Fetch data such as posts, comments, users, etc., from the JSON Placeholder API using GraphQL queries.
+- **Mutations:** Test data manipulation operations like creating, updating, and deleting resources.
 
-# watch mode
-$ npm run start:dev
+## Guide
+For examples and more, you can visit https://graphqljsonplaceholder.vercel.app/graphql
 
-# production mode
-$ npm run start:prod
-```
+## Contributing
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+We welcome contributions from the community! Please read our CONTRIBUTING.md to get started.
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Stay in touch
+
+- Author - [Enoch Osarenren](www.linkedin.com/in/enoch-osarenren)

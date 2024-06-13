@@ -2,9 +2,9 @@
 import { Args, Parent, Query, ResolveField, Resolver } from "@nestjs/graphql";
 import { Album, Post, Todo, User } from "src/graphql";
 import { UserService } from "./users.service";
-import { PostsService } from "src/posts/posts.service";
-import { AlbumsService } from "src/albums/albums.service";
-import { TodosService } from "src/todos/todos.service";
+import { PostsService } from "src/modules/posts/posts.service";
+import { AlbumsService } from "src/modules/albums/albums.service";
+import { TodosService } from "src/modules/todos/todos.service";
 
 @Resolver('User')
 export class UsersResolver {

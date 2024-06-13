@@ -2,7 +2,7 @@ import { Args, Parent, Query, ResolveField, Resolver } from "@nestjs/graphql";
 import { PhotosService } from "./photos/photos.service";
 import { Album, Photo, User } from "src/graphql";
 import { AlbumsService } from "./albums.service";
-import { UserService } from "src/users/users.service";
+import { UserService } from "src/modules/users/users.service";
 
 @Resolver('Album')
 export class AlbumResolver {

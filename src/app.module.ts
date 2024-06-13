@@ -4,12 +4,12 @@ import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
-import { UserModule } from './users/users.module';
-import { PostsModule } from './posts/posts.module';
+import { UserModule } from './modules/users/users.module';
+import { PostsModule } from './modules/posts/posts.module';
 import { ConfigModule } from '@nestjs/config';
-import { AlbumsModule } from './albums/albums.module';
-import { TodosModule } from './todos/todos.module';
-import { JsonplaceholderModule } from './jsonplaceholder/jsonplaceholder.module';
+import { AlbumsModule } from './modules/albums/albums.module';
+import { TodosModule } from './modules/todos/todos.module';
+import { JsonplaceholderModule } from './common/services/jsonplaceholder/jsonplaceholder.module';
 import configuration from './config/configuration';
 
 @Module({

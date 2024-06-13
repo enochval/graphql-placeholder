@@ -1,7 +1,7 @@
 import { Args, Parent, Query, ResolveField, Resolver } from "@nestjs/graphql";
 import { TodosService } from "./todos.service";
 import { Todo, User } from "src/graphql";
-import { UserService } from "src/users/users.service";
+import { UserService } from "src/modules/users/users.service";
 
 
 @Resolver('Todo')
