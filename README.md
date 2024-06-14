@@ -1,11 +1,11 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="100" alt="Nest Logo" /></a>
-  <a href="http://nestjs.com/" target="blank"><img src="https://www.vectorlogo.zone/logos/graphql/graphql-icon.svg" width="100" alt="GraphQL Logo" /></a>
+  <a href="https://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="100" alt="Nest Logo" /></a>
+  <a href="https://graphql.org/" target="blank"><img src="https://www.vectorlogo.zone/logos/graphql/graphql-icon.svg" width="100" alt="GraphQL Logo" /></a>
 </p>
 
-# JSON Placeholder GraphQL API
+# GraphQL Placeholder
 
-<p align="center">Welcome to the <a href="https://graphqljsonplaceholder.vercel.app" target="blank">JSON Placeholder GraphQL API</a>!</p>
+<p align="center">Welcome to the <a href="https://graphqlplaceholder.vercel.app" target="blank">GraphQL Placeholder</a>!</p>
     <p align="center">
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
@@ -22,7 +22,7 @@
 
 ## Description
 
-This project is a NestJS GraphQL implementation of the popular [JSON Placeholder](https://jsonplaceholder.typicode.com) API, providing developers with a GraphQL playground for testing and experimentation.
+[GraphQL Placeholder](https://graphqlplaceholder.vercel.app) is a [NestJS](https://nestjs.com) GraphQL implementation of the popular [JSON Placeholder](https://jsonplaceholder.typicode.com) API, providing developers with a [GraphQL playground](https://graphqlplaceholder.vercel.app/graphql) for testing and experimentation.
 
 ## Features
 
@@ -35,10 +35,10 @@ This project is a NestJS GraphQL implementation of the popular [JSON Placeholder
 - Supports QUERY, MUTATION
 - HTTP or HTTPS
 - Compatible with React, Angular, Vue, Ember, ...
-- **GraphQL Playground**: An interactive playground for testing GraphQL queries and mutations.
-- **NestJS Framework**: Built with NestJS for high performance and maintainability.
-- **JSON Placeholder Integration**: Seamless integration with JSON Placeholder API data including posts, comments, users, todos, albums and photos.
-- **Type-safe Queries**: Utilize TypeScript for a smooth and error-free development experience.
+- An interactive playground for testing GraphQL queries and mutations.
+- Built with NestJS for high performance and maintainability.
+- Seamless integration with JSON Placeholder API data including posts, comments, users, todos, albums and photos.
+- Utilize TypeScript for a smooth and error-free development experience.
 
 ## Usage
 
@@ -46,15 +46,15 @@ This project is a NestJS GraphQL implementation of the popular [JSON Placeholder
 - **Mutations:** Test data manipulation operations like creating, updating, and deleting resources.
 
 ## Guide
-For examples and more, you can visit https://graphqljsonplaceholder.vercel.app/graphql
+For examples and more, you can visit https://graphqlplaceholder.vercel.app/graphql
 
 ## Contributing
 
-We welcome contributions from the community! Please read our CONTRIBUTING.md to get started.
+We welcome contributions from the community! Please read our [CONTRIBUTING.md](./CONTRIBUTING.md) to get started.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ## Stay in touch
 

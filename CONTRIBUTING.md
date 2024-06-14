@@ -1,8 +1,4 @@
-
-#### CONTRIBUTING.md
-
-
-# Contributing to JSON Placeholder GraphQL API
+# Contributing to GraphQL Placeholder
 
 Thank you for considering contributing to our project! We appreciate your time and effort.
 
@@ -11,7 +7,7 @@ Thank you for considering contributing to our project! We appreciate your time a
 1. **Fork the repository** on GitHub.
 2. **Clone your fork** locally:
    ```bash
-   git clone https://github.com/yourusername/json-placeholder-graphql.git
+   git clone https://github.com/yourusername/graphql-placeholder.git
    ```
 3. **Create a branch** for your contribution:
     ```bash
@@ -45,11 +41,11 @@ Please follow the coding style used throughout the project. Write clear, concise
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/json-placeholder-graphql.git
+git clone https://github.com/yourusername/graphql-placeholder.git
 ```
 
 ```bash
-cd json-placeholder-graphql
+cd graphql-placeholder
 ```
 
 2. Install dependencies:

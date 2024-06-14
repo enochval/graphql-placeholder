@@ -1,8 +1,8 @@
 {
-  "name": "json-placeholder-api-nestjs-graphqlhub",
+  "name": "graphql-placeholder",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "osarenrenenoch@gmail.com",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
