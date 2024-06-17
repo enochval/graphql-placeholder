@@ -8,7 +8,8 @@ async function bootstrap() {
 
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
-  app.setViewEngine('hbs');
+  app.setViewEngine('html');
+  app.engine('html', require('hbs').__express)
 
   await app.listen(3000);
 }
