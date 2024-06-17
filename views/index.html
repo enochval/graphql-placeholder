@@ -46,20 +46,20 @@
                 </h1>
 
                 <p class="subtitle">
-                    {{!-- Fake Online GraphQL API for Testing and Prototyping --}}
+                    <!-- Fake Online GraphQL API for Testing and Prototyping -->
                     Your Sandbox for Seamless GraphQL Testing and Prototyping
-                    {{!-- <br> <b>Serving ~350M requests per month</b> --}}
+                    <!-- <br> <b>Serving ~350M requests per month</b> -->
                     <br> Powered by
                     <a href="https://jsonplaceholder.typicode.com" target="_blank">JSONPlaceholder</a>
-                    {{!-- +
-                    <a href="https://github.com/typicode/lowdb">LowDB</a> --}}
+                     <!-- +
+                    <a href="https://github.com/typicode/lowdb">LowDB</a> -->
                 </p>
 
-                {{!-- <p>
+                <!-- <p>
                   <a href="https://www.patreon.com/bePatron?c=784328">
                     <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="217">
                   </a>
-                </p> --}}
+                </p> -->
             </div>
         </div>
 
@@ -281,13 +281,13 @@ fetch('https://graphqlplaceholder.vercel.app/graphql', {
     <footer>
         <div class="container">
             <div style="margin-bottom: 2rem;">
-                <!-- <a href="https://www.patreon.com/bePatron?c=784328"> -->
-                <!--   <img -->
-                <!--     src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" -->
-                <!--     width="217" -->
-                <!--   /> -->
-                <!-- </a> -->
-                <a href="https://github.com/users/typicode/sponsorship">
+                <!-- <a href="https://www.patreon.com/bePatron?c=784328">
+                  <img
+                    src="/become_a_patron_button.png"
+                    width="217"
+                  />
+                </a> -->
+                <a href="https://github.com/users/enochval/sponsorship">
                     <i class="fab fa-github-alt"></i>
                     <strong>Sponsor this project on GitHub</strong>
                 </a>
@@ -302,33 +302,14 @@ fetch('https://graphqlplaceholder.vercel.app/graphql', {
     </footer>
 
     <!-- Analytics -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KVHZHCH0EW"></script>
     <script>
-            ; (function (i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r
-                    ; (i[r] =
-                        i[r] ||
-                        function () {
-                            ; (i[r].q = i[r].q || []).push(arguments)
-                        }),
-                        (i[r].l = 1 * new Date())
-                    ; (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0])
-                a.async = 1
-                a.src = g
-                m.parentNode.insertBefore(a, m)
-            })(
-                window,
-                document,
-                'script',
-                '//www.google-analytics.com/analytics.js',
-                'ga',
-            )
-        ga('create', 'UA-44497010-1', 'typicode.com')
-        ga('send', 'pageview')
-        var trackOutboundLink = function (url) {
-            ga('send', 'event', 'outbound', 'click', url, {
-                transport: 'beacon',
-            })
-        }
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-KVHZHCH0EW');
     </script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
