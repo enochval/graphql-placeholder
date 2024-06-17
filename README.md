@@ -58,4 +58,4 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 ## Stay in touch
 
-- Author - [Enoch Osarenren](www.linkedin.com/in/enoch-osarenren)
+- Author - [Enoch Osarenren](https://linkedin.com/in/enoch-osarenren)
