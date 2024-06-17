@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
@@ -11,6 +11,7 @@ import { AlbumsModule } from './modules/albums/albums.module';
 import { TodosModule } from './modules/todos/todos.module';
 import { JsonplaceholderModule } from './common/services/jsonplaceholder/jsonplaceholder.module';
 import configuration from './config/configuration';
+import { graphqlMiddleware } from './common/middlewares/graphql.middleware';
 
 @Module({
   imports: [
@@ -37,4 +38,10 @@ import configuration from './config/configuration';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(graphqlMiddleware)
+      .forRoutes('graphql')
+  }
+}
