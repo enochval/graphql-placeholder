@@ -5,7 +5,12 @@
             "src": "dist/main.js",
             "use": "@vercel/node",
             "config": {
-                "includeFiles": "dist/**"
+                "includeFiles": [
+                    "dist/**",
+                    "public/**/*",
+                    "views/**/*"
+                ]
+
             }
         }
     ],
