@@ -22,7 +22,7 @@
         <div class="announcement">
             This service is maintained and provided for free, please consider
             supporting it on
-            <a href="https://github.com/users/typicode/sponsorship">GitHub Sponsors</a>
+            <a href="https://github.com/users/enochval/sponsorship">GitHub Sponsors</a>
             ❤️
         </div>
         <nav class="container">
@@ -67,7 +67,7 @@
         <div class="sponsors">
             <h3>Sponsors</h3>
 
-            {{!-- <p>
+            <!-- <p>
                 <a href="https://tryretool.com/?utm_source=sponsor&utm_campaign=typicode" target="_blank">
                     <img src="https://i.imgur.com/IBItATn.png" height="70px">
                 </a>
@@ -77,7 +77,7 @@
                 <a href="https://www.checklyhq.com/?utm_source=jsonplaceholder" target="_blank">
                     <img src="https://i.imgur.com/qS8XyfG.png" height="70px">
                 </a>
-            </p> --}}
+            </p> -->
 
             <p>
                 <a href="https://www.patreon.com/bePatron?c=784328">Your Company Logo Here</a>
@@ -145,45 +145,45 @@ fetch('https://graphqlplaceholder.vercel.app/graphql', {
                 <script src="https://app.codefund.io/properties/338/funder.js" async="async"></script>
 
                 <!-- Resources -->
-                <h2>Resources</h2>
+                <h2>Queries</h2>
                 <p>
-                    JSONPlaceholder comes with a set of 6 common resources:
+                    GraphQLPlaceholder comes with a set queries that supports JSONPlaceholder resources:
                 </p>
 
                 <table class="resources">
                     <tr>
                         <td>
-                            <a href="/posts">/posts</a>
+                            posts
                         </td>
                         <td>100 posts</td>
                     </tr>
                     <tr>
                         <td>
-                            <a href="/comments">/comments</a>
+                            comments
                         </td>
                         <td>500 comments</td>
                     </tr>
                     <tr>
                         <td>
-                            <a href="/albums">/albums</a>
+                            albums
                         </td>
                         <td>100 albums</td>
                     </tr>
                     <tr>
                         <td>
-                            <a href="/photos">/photos</a>
+                            photos
                         </td>
                         <td>5000 photos</td>
                     </tr>
                     <tr>
                         <td>
-                            <a href="/todos">/todos</a>
+                            todos
                         </td>
                         <td>200 todos</td>
                     </tr>
                     <tr>
                         <td>
-                            <a href="/users">/users</a>
+                            users
                         </td>
                         <td>10 users</td>
                     </tr>
@@ -194,72 +194,37 @@ fetch('https://graphqlplaceholder.vercel.app/graphql', {
                     <b>posts</b> have many
                     <b>comments</b>,
                     <b>albums</b> have many
-                    <b>photos</b>, ... see below for routes examples.
+                    <b>photos</b>, ... see <a href="/guide">guide</a> for the full list..
                 </p>
 
                 <!-- Routes -->
-                <h2>Routes</h2>
+                <h2>Mutations</h2>
                 <p>
-                    All HTTP methods are supported.
+                    GraphQLPlaceholder currently supports 3 mutations for Post resource.
                 </p>
 
                 <table>
                     <tr>
-                        <td>GET</td>
-                        <td>
-                            <a href="/posts">/posts</a>
-                        </td>
+                        <td>Post</td>
+                        <td>createPost</td>
                     </tr>
                     <tr>
-                        <td>GET</td>
-                        <td>
-                            <a href="/posts/1">/posts/1</a>
-                        </td>
+                        <td>Post</td>
+                        <td>updatePost</td>
                     </tr>
                     <tr>
-                        <td>GET</td>
-                        <td>
-                            <a href="/posts/1/comments">/posts/1/comments</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>GET</td>
-                        <td>
-                            <a href="/comments?postId=1">/comments?postId=1</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>GET</td>
-                        <td>
-                            <a href="/posts?userId=1">/posts?userId=1</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>POST</td>
-                        <td>/posts</td>
-                    </tr>
-                    <tr>
-                        <td>PUT</td>
-                        <td>/posts/1</td>
-                    </tr>
-                    <tr>
-                        <td>PATCH</td>
-                        <td>/posts/1</td>
-                    </tr>
-                    <tr>
-                        <td>DELETE</td>
-                        <td>/posts/1</td>
-                    </tr>
+                        <td>Post</td>
+                        <td>deletePost</td>
                     </tr>
                 </table>
 
                 <p>
                     <strong>Note</strong>: you can view detailed examples
-                    <a href="/guide/">here</a>.
+                    <a href="/guide">here</a>.
                 </p>
 
                 <!-- JSON Server -->
-                <h2>Use your own data</h2>
+                <!-- <h2>Use your own data</h2> -->
                 <!-- <p>
         <a href="https://github.com/typicode/json-server">JSON Server</a>
         powers this website. You can use it to create the same fake API in less than
@@ -268,10 +233,10 @@ fetch('https://graphqlplaceholder.vercel.app/graphql', {
 
       <pre><code class="bash">npm install json-server</code></pre> -->
 
-                <p>
+                <!-- <p>
                     With <a href="https://my-json-server.typicode.com">My JSON Server</a> online service and a simple
                     GitHub repo, you can have your own online fake REST server in seconds.
-                </p>
+                </p> -->
             </main>
         </div>
 
