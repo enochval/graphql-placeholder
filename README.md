@@ -46,7 +46,7 @@
 - **Mutations:** Test data manipulation operations like creating, updating, and deleting resources.
 
 ## Guide
-For examples and more, you can visit https://graphqlplaceholder.vercel.app/graphql
+For examples and more, you can visit https://graphqlplaceholder.vercel.app/guide
 
 ## Contributing
 
